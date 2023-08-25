@@ -3,8 +3,8 @@ package ru.test.testfragmentsviewpager2
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import androidx.viewpager2.widget.ViewPager2
 import ru.test.testfragmentsviewpager2.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -16,26 +16,11 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val viewPager2 = binding.viewPager2
-
-        val fragments = arrayListOf<Fragment>(DuckFragment(), TanyaFragment())
-        val adapter = ViewPager2Adapter(fragments, this)
-        viewPager2.adapter = adapter
-
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.fragment_container_view_tag, ViewPager2Fragment())
+            .addToBackStack(null)
+            .commit()
     }
-
-}
-
-class ViewPager2Adapter(val fragments: ArrayList<Fragment>,
-                    activity: AppCompatActivity
-                    ) : FragmentStateAdapter(activity) {
-    override fun getItemCount(): Int {
-        return fragments.size
-    }
-
-    override fun createFragment(position: Int): Fragment {
-        return fragments[position]
-    }
-
 
 }
