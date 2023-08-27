@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import ru.test.testfragmentsviewpager2.databinding.FragmentViewPager2Binding
 
@@ -30,13 +31,13 @@ class ViewPager2Fragment : Fragment() {
         val adapter = ViewPager2Adapter(fragments, this)
         viewPager2.adapter = adapter
 
-        viewPager2.currentItem = 1
+//        viewPager2.currentItem = 1
         return view
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        Log.d("MY_LOG_VP2", "onSaveInstanceState")
+//        Log.d("MY_LOG_VP2", "onSaveInstanceState")
     }
 
 
@@ -49,7 +50,7 @@ class ViewPager2Adapter(val fragments: ArrayList<Fragment>, fragment: Fragment
     }
 
     override fun createFragment(position: Int): Fragment {
-        Log.d("MY_LOG_VP2", position.toString())
+//        Log.d("MY_LOG_VP2", position.toString())
         return fragments[position]
     }
 

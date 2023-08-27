@@ -16,11 +16,14 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        supportFragmentManager
-            .beginTransaction()
-            .replace(R.id.fragment_container_view_tag, ViewPager2Fragment())
-            .addToBackStack(null)
-            .commit()
+        if (savedInstanceState == null) {
+            supportFragmentManager
+                .beginTransaction()
+                .replace(R.id.fragment_container_view_tag, ViewPager2Fragment())
+                .addToBackStack(null)
+                .commit()
+        }
+
     }
 
 }
